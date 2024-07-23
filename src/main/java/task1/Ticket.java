@@ -4,9 +4,9 @@ import java.time.Instant;
 import java.util.Arrays;
 
 public class Ticket {
-    private char[] ID;
-    private char[] concertHall;
-    private int[] eventCode;
+    private String ID;
+    private String concertHall;
+    private int eventCode;
     private long time;
     private boolean isPromo;
     private char stadiumSector;
@@ -14,15 +14,9 @@ public class Ticket {
 
 
     public Ticket() {
-        this.ID = new char[]{'7','u','6'};
-        this.concertHall = new char[]{'R','e','d',' ','H','a','l','l'};
-        this.eventCode = new int[]{6,7,4};
-        this.time = Instant.now().getEpochSecond();;
-        this.isPromo = false;
-        this.stadiumSector='C';
-        this.allowedBackpack = 15.23;
+
     }
-    public Ticket(char[] ID, char[] concertHall, int[] eventCode, long time, boolean isPromo, char stadiumSector, double allowedBackpack) {
+    public Ticket(String ID, String concertHall, int eventCode, long time, boolean isPromo, char stadiumSector, double allowedBackpack) {
         this.ID = ID;
         this.concertHall = concertHall;
         this.eventCode = eventCode;
@@ -32,39 +26,34 @@ public class Ticket {
         this.allowedBackpack = allowedBackpack;
     }
 
-    public Ticket(char[] concertHall, long time, char stadiumSector){
-        this.ID = new char[]{'h','6','7'};
+    public Ticket(String concertHall, long time, char stadiumSector){
         this.concertHall = concertHall;
-        this.eventCode = new int[]{'4','5','5'};
         this.time = time;
-        this.isPromo = true ;
-        this.stadiumSector = 'A';
-        this.allowedBackpack = 15.5;
+        this.stadiumSector=stadiumSector;
     }
 
 
-
-    public char[] getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(char[] ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 
-    public char[] getConcertHall() {
+    public String getConcertHall() {
         return concertHall;
     }
 
-    public void setConcertHall(char[] concertHall) {
+    public void setConcertHall(String concertHall) {
         this.concertHall = concertHall;
     }
 
-    public int[] getEventCode() {
+    public int getEventCode() {
         return eventCode;
     }
 
-    public void setEventCode(int[] eventCode) {
+    public void setEventCode(int eventCode) {
         this.eventCode = eventCode;
     }
 
@@ -104,9 +93,9 @@ public class Ticket {
     public String toString() {
         String promo = isPromo? "yes" : "no";
         return "Ticket " +
-                "ID " + Arrays.toString(ID).replaceAll("[\\,\\[\\]\\ ]", "") +
-                "\n Concert hall - " + Arrays.toString(concertHall).replaceAll("[\\,\\[\\]\\ ]", "") +
-                "\n Event Code - " + Arrays.toString(eventCode).replaceAll("[\\,\\[\\]\\ ]", "") +
+                "ID " + ID +
+                "\n Concert hall - " + concertHall+
+                "\n Event Code - " + eventCode +
                 "\n Time - " + Instant.ofEpochSecond(time).toString() +
                 "\n Promo - " + promo +
                 "\n Stadium sector - " + stadiumSector +
