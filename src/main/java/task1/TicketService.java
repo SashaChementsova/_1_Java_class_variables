@@ -35,7 +35,7 @@ public class TicketService
         addTicket(ticket1);
         addTicket(ticket2);
         addTicket(ticket3);
-
+        List<Ticket> ticketsBySector = findTicketByStadiumSector('C');
     }
     public static long getUnixTimestamp(int year,int month, int day, int hour,int min){
         return LocalDate.of(year,month,day).atTime(hour,min).toInstant(ZoneOffset.UTC).getEpochSecond();
@@ -50,5 +50,17 @@ public class TicketService
             if(ID.equals(ticket.getID())) return ticket;
         }
         return null;
+    }
+
+    public static List<Ticket> findTicketByStadiumSector(char stadiumSector){
+        List<Ticket> ticketsBySector = new ArrayList<>();
+
+        for(Ticket ticket: tickets){
+            if(ticket.getStadiumSector() == stadiumSector) {
+                ticketsBySector.add(ticket);
+                System.out.println("Ticket " + ticket.getID() + " has stadium sector " + stadiumSector);
+            }
+        }
+        return ticketsBySector;
     }
 }
