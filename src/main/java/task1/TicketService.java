@@ -7,7 +7,7 @@ import java.util.List;
 
 public class TicketService
 {
-    private static List<Ticket> tickets;
+    private static List<Ticket> tickets = new ArrayList<>();
 
     public TicketService() {
         tickets = new ArrayList<>();
